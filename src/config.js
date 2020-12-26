@@ -4,5 +4,5 @@ config();
 
 
 export default {
-    dbURL: process.env.MONGODB_URI || 'mongodb://localhost/localDb'
+    dbURL: process.env.MONGODB_URI || 'mongodb://localhost/localDbJWT'
 }
