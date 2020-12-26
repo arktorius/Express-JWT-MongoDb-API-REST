@@ -1,9 +1,8 @@
-import express from 'express'
+import app from  './app'
+import './database'
+import 'dotenv'
 
 
-
-const app=express();
-
-
-app.listen(3000);
+app.listen(app.get('port'));
+console.log('server on port ', app.get('port'));
 
