@@ -5,7 +5,9 @@ import configDB from './config'
 (async () => {
     const db = await mongoose.connect(configDB.dbURL, {
         useNewUrlParser: true,
-        useUnifiedTopology: true
+        useUnifiedTopology: true,
+        useFindAndModify:true,
+        useCreateIndex:true
     }
 
 

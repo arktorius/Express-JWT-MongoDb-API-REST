@@ -1,9 +1,10 @@
 import { format } from "morgan"
 
-import {Schema,model } from 'mongoose'
+import { Schema, model } from 'mongoose'
+import bcrypt from 'bcryptjs'
 
 
-const Users=new Schema({
+const Users = new Schema({
 
     UserName: {
         type: String,
@@ -20,7 +21,13 @@ const Users=new Schema({
     UserIsAviable: {
         type: Boolean,
         trim: true
-    }
+    },
+    Role:[
+        {
+            ref:"Role",
+            type: Schema.Types.ObjectId
+        }
+    ]
 
 
 
@@ -29,4 +36,16 @@ const Users=new Schema({
     timestamps: true
 });
 
-export default model('Users',Users);
+///Users.statics.test = async () => console.log('ok');
+
+Users.statics.ecryptPassword = async (password) => {
+    const salt = await bcrypt.genSalt(10);
+    return await bcrypt.hash(password, salt)
+};
+
+Users.statics.comparePassword = async (password, passwordRecived) => {
+    return await bcrypt.compare(password, passwordRecived);
+
+};
+
+export default model('Users', Users);
