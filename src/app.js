@@ -22,9 +22,9 @@ app.use(express.urlencoded({ extended: false }));
 
 
 
-app.use('/blog',blogRouter)
-app.use('/user', userRouter);
-app.use('/api',authRouter);
+app.use('/api/blog',blogRouter)
+app.use('/api/user', userRouter);
+app.use('/api/auth',authRouter);
 
 
 export default app

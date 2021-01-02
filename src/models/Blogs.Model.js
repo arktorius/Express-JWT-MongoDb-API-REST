@@ -28,4 +28,4 @@ const blogModel=new Schema({
 
 });
 
-export default model('Blogs',blogModel);
+export default model('Blog',blogModel);

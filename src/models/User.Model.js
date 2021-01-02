@@ -27,7 +27,14 @@ const Users = new Schema({
             ref:"Role",
             type: Schema.Types.ObjectId
         }
+    ],
+    Blog:[
+        {
+            ref:"Blog",
+            type: Schema.Types.ObjectId
+        }
     ]
+
 
 
 

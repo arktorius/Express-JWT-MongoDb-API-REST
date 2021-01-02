@@ -5,7 +5,7 @@ import RoleModel from '../models/Role.Model'
 export const singUp = async (req, res) => {
 
     try {
-        const { UserName, UserPassword, Role } = req.body;
+        const { UserName, UserPassword, Role,Blog } = req.body;
 
         const newUser = new UserModel({
             UserName,
@@ -30,10 +30,12 @@ export const singUp = async (req, res) => {
         }
 
         await newUser.save();
-        res.status(200).json('sinup');
+        console.log(newUser);
+        res.status(200).json('singup');
     
 
     } catch (error) {
+        console.log(error);
         res.json('error')
     }
 };
