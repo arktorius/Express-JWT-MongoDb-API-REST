@@ -44,10 +44,16 @@ export const singIn = async (req, res) => {
     try {
         const { UserName, UserPassword } = req.body;
 
-        const userFound = await UserModel.findOne({ UserName: UserName });
+        const userFound = await UserModel.findOne({ UserName: UserName }).populate("Role");
 
+        
+
+        
+        if (!userFound) {
+            res.status(404).json('User not found');
+        }
         const compare = await UserModel.comparePassword(UserPassword, userFound.UserPassword);
-
+        console.log(userFound);
         if(compare){
             
             const token= await jwt.sign({id:userFound.id},'secret',{expiresIn:200});
